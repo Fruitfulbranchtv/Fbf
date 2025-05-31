@@ -1,0 +1,187 @@
+/* Custom Styles for The Fruitful Branch Family */
+
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Lora:ital@1&display=swap');
+
+:root {
+    --primary: #2E7D32; /* Forest Green */
+    --secondary: #F5F5F5; /* Light Gray */
+    --accent: #FFB300; /* Amber */
+    --neutral: #FFFFFF; /* White */
+    --text: #212121; /* Dark Gray */
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: var(--text);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background: var(--primary);
+}
+
+nav ul li a {
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--accent);
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.hero > div {
+    position: relative;
+    z-index: 1;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: var(--neutral);
+}
+
+.btn-primary:hover {
+    background: var(--accent);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: var(--accent);
+    color: var(--text);
+}
+
+.btn-secondary:hover {
+    background: var(--primary);
+    color: var(--neutral);
+    transform: translateY(-2px);
+}
+
+/* Cards */
+.card {
+    background: var(--neutral);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* News Cards */
+.news-card {
+    background: var(--neutral);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Video Container */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video-card iframe {
+    width: 100%;
+    height: 200px;
+    border-radius: 8px;
+}
+
+/* Footer */
+footer {
+    background: var(--primary);
+}
+
+footer a:hover {
+    color: var(--accent);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: var(--primary);
+        position: absolute;
+        top: 64px;
+        left: 0;
+    }
+
+    #nav-menu.show {
+        display: flex;
+    }
+
+    #nav-menu li {
+        padding: 10px 20px;
+        text-align: center;
+    }
+
+    .hero {
+        height: 70vh;
+    }
+
+    .hero h2 {
+        font-size: 2.5rem;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Accessibility */
+:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* Lazy Loading */
+img[loading="lazy"] {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+img[loading="lazy"].loaded {
+    opacity: 1;
+  }
