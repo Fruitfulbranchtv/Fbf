@@ -15,43 +15,69 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <div class="container">
-                <a class="navbar-brand d-flex align-items-center" href="index.html">
-                    <img src="./assets/images/logo.webp" alt="The Fruitful Branch Family Logo" class="logo-img mr-2">
-                    <span>The Fruitful Branch Family</span>
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a class="nav-link active" href="index.html" aria-current="page">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="mission.html">Mission</a></li>
-                        <li class="nav-item"><a class="nav-link" href="get-involved.html">Get Involved</a></li>
-                        <li class="nav-item"><a class="nav-link" href="media.html">Media</a></li>
-                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                    </ul>
-                    <button class="btn btn-outline-light ml-3 dark-mode-toggle" id="dark-mode-toggle" aria-label="Toggle dark mode">
-                        <i class="fas fa-moon"></i>
-                    </button>
-                </div>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="index.html">
+                <img src="./assets/images/logo.webp" alt="The Fruitful Branch Family Logo" style="max-width: 50px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="mission.html">Mission</a></li>
+                    <li class="nav-item"><a class="nav-link" href="get-involved.html">Get Involved</a></li>
+                    <li class="nav-item"><a class="nav-link" href="media.html">Media</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item">
+                        <button id="dark-mode-toggle" class="btn btn-link nav-link" aria-label="Toggle dark mode">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                </ul>
             </div>
         </nav>
     </header>
     <main>
-        <div id="heroCarousel" class="carousel slide" data-ride="carousel">
+        <div id="heroCarousel" class="carousel slide" data-ride="carousel" role="region" aria-label="Homepage hero carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#heroCarousel" data-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></li>
+                <li data-target="#heroCarousel" data-slide-to="1" aria-label="Slide 2"></li>
+                <li data-target="#heroCarousel" data-slide-to="2" aria-label="Slide 3"></li>
+            </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="./assets/images/hero-home.webp" class="d-block w-100" alt="Welcome to The Fruitful Branch Family">
-                    <div class="carousel-caption d-none d-md-block">
+                    <img src="./assets/images/hero-home-1.webp" class="d-block w-100" alt="Welcome to The Fruitful Branch Family" loading="lazy">
+                    <div class="carousel-caption">
                         <h1 class="animate-fade-in">Make We Shine for Jesus!</h1>
                         <p>Join our mission to reach 20 million souls by 2035.</p>
                         <a href="get-involved.html" class="btn btn-primary">Join Us Now!</a>
                     </div>
                 </div>
+                <div class="carousel-item">
+                    <img src="./assets/images/hero-home-2.webp" class="d-block w-100" alt="Preaching the Gospel in West Africa" loading="lazy">
+                    <div class="carousel-caption">
+                        <h1 class="animate-fade-in">Spread the Gospel!</h1>
+                        <p>Preach in markets and online with us.</p>
+                        <a href="mission.html" class="btn btn-primary">Our Vision</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="./assets/images/hero-home-3.webp" class="d-block w-100" alt="Community outreach in Lagos" loading="lazy">
+                    <div class="carousel-caption">
+                        <h1 class="animate-fade-in">Build God’s Kingdom!</h1>
+                        <p>Serve communities through charity.</p>
+                        <a href="get-involved.html" class="btn btn-primary">Get Involved</a>
+                    </div>
+                </div>
             </div>
+            <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev" aria-label="Previous slide">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </a>
+            <a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next" aria-label="Next slide">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </a>
         </div>
         <section class="py-5">
             <div class="container">
@@ -97,19 +123,18 @@
             </div>
         </section>
     </main>
-    <footer role="contentinfo">
+    <footer class="py-4 text-center">
         <div class="container">
-            <p>© 2025 The Fruitful Branch Family. All Rights Reserved.</p>
-            <div class="footer-links">
-                <a href="https://wa.me/+2349020229248" target="_blank" aria-label="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                <a href="https://tiktok.com/@godsguidedickson" target="_blank" aria-label="Follow us on TikTok"><i class="fab fa-tiktok"></i></a>
-                <a href="https://youtube.com/@TheFruitfulBranch" target="_blank" aria-label="Watch us on YouTube"><i class="fab fa-youtube"></i></a>
-            </div>
-            <p class="footer-contact">Contact: <a href="mailto: fruitfulbranchmission@gmail.com">info@fruitfulbranchfamily.org</a> | +234XXXXXXXXXX</p>
+            <p>&copy; 2025 The Fruitful Branch Family. All rights reserved.</p>
+            <p>
+                <a href="https://youtube.com/@fruitfulbranch" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://tiktok.com/@fruitfulbranch" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://wa.me/+234567890123" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </p>
         </div>
     </footer>
     <script src="./js/jquery.min.js"></script>
     <script src="./js/bootstrap.bundle.min.js"></script>
     <script src="./js/scripts.js"></script>
 </body>
-</html>
+                    </html>
