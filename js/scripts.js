@@ -54,17 +54,25 @@ $(document).ready(function() {
         }
     });
 
-    // Paystack Donation
+    // Paystack Donation with Dynamic Input
     $('#donate-btn').click(function() {
+        const email = $('#donor-email').val();
+        const amount = $('#donation-amount').val();
+
+        if (!email || !amount || isNaN(amount) || parseInt(amount) <= 0) {
+            alert('Please enter a valid email and donation amount.');
+            return;
+        }
+
         const handler = PaystackPop.setup({
-            key: 'pk_test_f6ca4f024292b2305de634e54a115ff5f445250c', // Replace with your Paystack public key
-            email: 'donor@example.com', // Replace with dynamic user email if available
-            amount: 1000 * 100, // Default ₦1,000 (kobo)
+            key: 'pk_test_f6ca4f024292b2305de634e54a115ff5f445250c',
+            email: email,
+            amount: parseInt(amount) * 100, // Convert ₦ to kobo
             currency: 'NGN',
             ref: 'FBF_' + Math.floor((Math.random() * 1000000000) + 1),
             callback: function(response) {
                 alert('Donation successful! Reference: ' + response.reference);
-                // TODO: Log donation to WordPress or backend
+                // TODO: Log donation to backend or WordPress
             },
             onClose: function() {
                 alert('Donation cancelled.');
