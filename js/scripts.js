@@ -1,105 +1,61 @@
-// scripts.js - Hamburger menu, dark mode, form validation, Paystack integration
 $(document).ready(function() {
-    // Hamburger Menu Toggle
+    // Hamburger Menu
     $('#hamburger-toggle').click(function() {
-        $('#mobile-menu').toggleClass('active');
+        $('.nav-menu').toggleClass('active');
         $(this).find('i').toggleClass('fa-bars fa-times');
-        $(this).attr('aria-expanded', $('#mobile-menu').hasClass('active'));
+        $(this).attr('aria-expanded', $('.nav-menu').hasClass('active'));
     });
 
-    $('#hamburger-close').click(function() {
-        $('#mobile-menu').removeClass('active');
-        $('#hamburger-toggle').find('i').removeClass('fa-times').addClass('fa-bars');
-        $('#hamburger-toggle').attr('aria-expanded', 'false');
-    });
-
-    // Dark Mode Toggle
+    // Dark Mode
     $('#dark-mode-toggle').click(function() {
         $('body').toggleClass('dark-mode');
-        const isDark = $('body').hasClass('dark-mode');
         $(this).find('i').toggleClass('fa-moon fa-sun');
-        $(this).attr('aria-label', isDark ? 'Toggle Light Mode' : 'Toggle Dark Mode');
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        localStorage.setItem('darkMode', $('body').hasClass('dark-mode'));
     });
 
-    // Load Theme Preference
-    if (localStorage.getItem('theme') === 'dark') {
+    if (localStorage.getItem('darkMode') === 'true') {
         $('body').addClass('dark-mode');
-        $('#dark-mode-toggle').find('i').removeClass('fa-moon').addClass('fa-sun');
-        $('#dark-mode-toggle').attr('aria-label', 'Toggle Light Mode');
+        $('#dark-mode-toggle i').removeClass('fa-moon').addClass('fa-sun');
     }
 
-    // Form Validation (Volunteer, Partner, Contact)
-    $('#volunteer-form, #partner-form, #contact-form').on('submit', function(e) {
+    // Form Validation
+    $('#volunteer-form, #partner-form, #contact-form').submit(function(e) {
         e.preventDefault();
-        const form = $(this);
-        const formData = form.serializeArray();
-        let isValid = true;
-
-        form.find('input[required], textarea[required], select[required]').each(function() {
+        let valid = true;
+        $(this).find('input[required], textarea[required], select[required]').each(function() {
             if (!$(this).val()) {
-                isValid = false;
-                $(this).addClass('border-red-500');
+                valid = false;
+                $(this).css('border-color', 'red');
             } else {
-                $(this).removeClass('border-red-500');
+                $(this).css('border-color', '#ccc');
             }
         });
-
-        if (isValid) {
-            alert('Form submitted successfully! We will contact you soon.');
-            form[0].reset();
-            // TODO: Integrate with WordPress Contact Form 7 or EmailJS for actual submission
+        if (valid) {
+            alert('Form submitted successfully!');
+            this.reset();
         } else {
             alert('Please fill all required fields.');
         }
     });
 
-    // Paystack Donation with Dynamic Input
+    // Paystack Donation
     $('#donate-btn').click(function() {
-        const email = $('#donor-email').val();
-        const amount = $('#donation-amount').val();
-
-        if (!email || !amount || isNaN(amount) || parseInt(amount) <= 0) {
-            alert('Please enter a valid email and donation amount.');
-            return;
-        }
-
-        const handler = PaystackPop.setup({
-            key: 'pk_test_f6ca4f024292b2305de634e54a115ff5f445250c',
-            email: email,
-            amount: parseInt(amount) * 100, // Convert ₦ to kobo
-            currency: 'NGN',
-            ref: 'FBF_' + Math.floor((Math.random() * 1000000000) + 1),
-            callback: function(response) {
-                alert('Donation successful! Reference: ' + response.reference);
-                // TODO: Log donation to backend or WordPress
-            },
-            onClose: function() {
-                alert('Donation cancelled.');
-            }
-        });
-        handler.openIframe();
-    });
-
-    // Dynamic CTA Text Animation
-    $('.dynamic-cta').hover(
-        function() { $(this).text($(this).text().replace('Now', 'Today')); },
-        function() { $(this).text($(this).text().replace('Today', 'Now')); }
-    );
-
-    // Lazy Load Images (Native)
-    $('img[loading="lazy"]').each(function() {
-        if ('IntersectionObserver' in window) {
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.src = img.dataset.src || img.src;
-                        observer.unobserve(img);
-                    }
-                });
+        try {
+            let handler = PaystackPop.setup({
+                key: 'pk_test_XXXXXXXXXX', // Replace with your Paystack public key
+                email: 'donor@example.com',
+                amount: 5000 * 100, // ₦5,000
+                ref: 'FBF_' + Math.floor((Math.random() * 1000000000) + 1),
+                callback: function(response) {
+                    alert('Payment successful! Reference: ' + response.reference);
+                },
+                onClose: function() {
+                    alert('Payment window closed.');
+                }
             });
-            observer.observe(this);
+            handler.openIframe();
+        } catch (e) {
+            alert('Error loading Paystack. Please try again.');
         }
     });
 });
