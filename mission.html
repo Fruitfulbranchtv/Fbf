@@ -3,108 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Discover the mission of The Fruitful Branch Family to evangelize, disciple, and impact 20 million souls by 2035 in West Africa.">
-    <meta name="keywords" content="Gospel mission, West Africa evangelism, Christian ministry Nigeria, The Fruitful Branch Family">
+    <meta name="description" content="Discover the mission of The Fruitful Branch Family to evangelize 20 million souls by 2035 in West Africa.">
+    <meta name="keywords" content="Gospel mission, Christian ministry Nigeria, The Fruitful Branch Family">
     <meta name="author" content="The Fruitful Branch Family">
     <title>Mission | The Fruitful Branch Family</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Merriweather:ital@1&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/styles.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link rel="icon" href="./assets/favicon.ico">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <style>
-        :root { --primary: #1B5E20; --secondary: #E8F5E9; --accent: #FFCA28; --neutral: #FFFFFF; --text: #1A1A1A; }
-        body { font-family: 'Inter', sans-serif; margin: 0; }
-        header { background: var(--primary); }
-        .hero { background-size: cover; }
-    </style>
 </head>
-<body class="light-mode">
-    <header class="bg-primary text-white sticky top-0 z-50">
-        <nav class="container mx-auto flex items-center justify-between p-4">
-            <div class="flex items-center">
-                <img src="./assets/images/logo.webp" alt="Fruitful Branch Family Logo" class="h-12 mr-2" loading="lazy">
-                <h1 class="text-2xl font-bold font-inter">The Fruitful Branch Family</h1>
-            </div>
-            <button id="hamburger-toggle" class="md:hidden text-2xl focus:outline-none" aria-label="Toggle Mobile Menu" aria-expanded="false">
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="flex items-center space-x-6">
-                <ul class="hidden md:flex space-x-6 font-inter" id="desktop-menu">
-                    <li><a href="index.html" class="hover:text-accent">Home</a></li>
-                    <li><a href="about.html" class="hover:text-accent">About</a></li>
-                    <li><a href="mission.html" class="hover:text-accent" aria-current="page">Mission</a></li>
-                    <li><a href="get-involved.html" class="hover:text-accent">Get Involved</a></li>
-                    <li><a href="media.html" class="hover:text-accent">Media</a></li>
-                    <li><a href="contact.html" class="hover:text-accent">Contact</a></li>
-                </ul>
-                <button id="dark-mode-toggle" class="text-xl" aria-label="Toggle Dark Mode">
-                    <i class="fas fa-moon"></i>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="index.html">
+                    <img src="./assets/images/logo.webp" alt="The Fruitful Branch Family Logo" class="logo-img mr-2">
+                    <span>The Fruitful Branch Family</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="mission.html" aria-current="page">Mission</a></li>
+                        <li class="nav-item"><a class="nav-link" href="get-involved.html">Get Involved</a></li>
+                        <li class="nav-item"><a class="nav-link" href="media.html">Media</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    </ul>
+                    <button class="btn btn-outline-light ml-3 dark-mode-toggle" id="dark-mode-toggle" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
             </div>
         </nav>
-        <div id="mobile-menu" class="hidden md:hidden bg-primary text-white flex flex-col items-center space-y-4 py-4 fixed top-0 right-0 w-3/4 h-full z-40 transition-transform transform translate-x-full glassmorphism">
-            <button id="hamburger-close" class="self-end mr-4 text-2xl" aria-label="Close Mobile Menu">
-                <i class="fas fa-times"></i>
-            </button>
-            <a href="index.html" class="text-lg font-inter hover:text-accent menu-item" aria-label="Home">Home</a>
-            <a href="about.html" class="text-lg font-inter hover:text-accent menu-item" aria-label="About">About</a>
-            <a href="mission.html" class="text-lg font-inter hover:text-accent menu-item" aria-label="Mission" aria-current="page">Mission</a>
-            <a href="get-involved.html" class="text-lg font-inter hover:text-accent menu-item" aria-label="Get Involved">Get Involved</a>
-            <a href="media.html" class="text-lg font-inter hover:text-accent menu-item" aria-label="Media">Media</a>
-            <a href="contact.html" class="text-lg font-inter hover:text-accent menu-item" aria-label="Contact">Contact</a>
-        </div>
     </header>
-
-    <section class="hero bg-cover bg-center h-96 flex items-center text-white animate-fade-in" style="background-image: url('./assets/images/hero-mission.webp');">
-        <div class="container mx-auto text-center px-4">
-            <h2 class="text-4xl font-bold font-inter">Our Mission: Go and Make Disciples</h2>
-            <p class="text-xl font-merriweather mt-4">Matthew 28:19–20 guides our vision for West Africa.</p>
-        </div>
-    </section>
-
-    <section class="py-16 bg-secondary">
-        <div class="container mx-auto px-4">
-            <h3 class="text-3xl font-bold font-inter text-center mb-8">Our Vision by 2035</h3>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="card glassmorphism">
-                    <h4 class="text-xl font-inter font-semibold mb-2">Evangelism</h4>
-                    <p class="font-merriweather">Reach 200,000 souls through 34–35 monthly sermons, crusades, and online outreach in markets and communities.</p>
-                </div>
-                <div class="card glassmorphism">
-                    <h4 class="text-xl font-inter font-semibold mb-2">Discipleship</h4>
-                    <p class="font-merriweather">Train 2,000 leaders and enroll 8,900–9,000 in courses across 70–80 hubs in Nigeria, Ghana, and beyond.</p>
-                </div>
-                <div class="card glassmorphism">
-                    <h4 class="text-xl font-inter font-semibold mb-2">Impact</h4>
-                    <p class="font-merriweather">Grow to 10 million followers online and serve 100,000–150,000 through charity, education, and a Gospel app.</p>
+    <main>
+        <div id="heroCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="./assets/images/hero-mission.webp" class="d-block w-100" alt="Our Mission">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1 class="animate-fade-in">Go and Make Disciples</h1>
+                        <p>Matthew 28:19–20 guides our vision.</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <section class="py-16 bg-neutral">
-        <div class="container mx-auto px-4 text-center">
-            <h3 class="text-3xl font-bold font-inter mb-6">Make We Bear Fruit Together!</h3>
-            <p class="text-lg font-merriweather mb-6">Your prayers, time, and support can transform lives across West Africa. Join our mission today.</p>
-            <a href="get-involved.html" class="btn btn-primary dynamic-cta">Support Our Vision</a>
-        </div>
-    </section>
-
-    <footer class="bg-primary text-white py-8 relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10 bg-[url('./assets/images/kente-pattern.webp')] bg-repeat"></div>
-        <div class="container mx-auto px-4 text-center relative z-10">
-            <p class="font-merriweather mb-4">© 2025 The Fruitful Branch Family. All Rights Reserved.</p>
-            <div class="flex justify-center space-x-6 mb-4">
-                <a href="https://wa.me/+234XXXXXXXXXX" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp text-2xl hover:text-accent"></i></a>
-                <a href="https://tiktok.com/@fruitfulbranch" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok text-2xl hover:text-accent"></i></a>
-                <a href="https://youtube.com/@fruitfulbranch" target="_blank" aria-label="YouTube"><i class="fab fa-youtube text-2xl hover:text-accent"></i></a>
+        <section class="py-5">
+            <div class="container">
+                <h2 class="text-center mb-4">Our Vision by 2035</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="card glassmorphism">
+                            <div class="card-body text-center">
+                                <h3>Evangelism</h3>
+                                <p>Reach 200,000 souls through sermons and crusades.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card glassmorphism">
+                            <div class="card-body text-center">
+                                <h3>Discipleship</h3>
+                                <p>Train 2,000 leaders across 70–80 hubs.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card glassmorphism">
+                            <div class="card-body text-center">
+                                <h3>Impact</h3>
+                                <p>Grow to 10 million followers online.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <p class="font-inter">Contact: <a href="mailto:info@fruitfulbranchfamily.org" class="hover:text-accent">info@fruitfulbranchfamily.org</a> | +234-XXX-XXX-XXXX</p>
+        </section>
+        <section class="py-5 bg-light">
+            <div class="container">
+                <h2 class="text-center mb-4">Make We Bear Fruit</h2>
+                <p class="text-center">Your support transforms lives in West Africa.</p>
+                <div class="text-center">
+                    <a href="get-involved.html" class="btn btn-primary">Support Us</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer role="contentinfo">
+        <div class="container">
+            <p>© 2025 The Fruitful Branch Family. All Rights Reserved.</p>
+            <div class="footer-links">
+                <a href="https://wa.me/+234XXXXXXXXXX" target="_blank" aria-label="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://tiktok.com/@fruitfulbranch" target="_blank" aria-label="Follow us on TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://youtube.com/@fruitfulbranch" target="_blank" aria-label="Watch us on YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p class="footer-contact">Contact: <a href="mailto:info@fruitfulbranchfamily.org">info@fruitfulbranchfamily.org</a> | +234XXXXXXXXXX</p>
         </div>
     </footer>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.bundle.min.js"></script>
     <script src="./js/scripts.js"></script>
 </body>
 </html>
