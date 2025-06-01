@@ -40,6 +40,18 @@ body.dark-mode .btn-secondary {
     color: var(--accent);
     border: 1px solid var(--accent);
 }
+/* In css/styles.css */
+.form-control.is-invalid {
+    border-color: #dc3545;
+}
+.form-control.is-valid {
+    border-color: var(--primary);
+}
+.invalid-feedback {
+    display: block;
+    color: #dc3545;
+    font-size: 0.875rem;
+}
 
 main {
     flex: 1;
