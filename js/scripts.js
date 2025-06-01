@@ -57,7 +57,7 @@ $(document).ready(function() {
     // Paystack Donation
     $('#donate-btn').click(function() {
         const handler = PaystackPop.setup({
-            key: 'pk_test_XXXXXXXXXX', // Replace with your Paystack public key
+            key: 'pk_test_f6ca4f024292b2305de634e54a115ff5f445250c', // Replace with your Paystack public key
             email: 'donor@example.com', // Replace with dynamic user email if available
             amount: 1000 * 100, // Default ₦1,000 (kobo)
             currency: 'NGN',
