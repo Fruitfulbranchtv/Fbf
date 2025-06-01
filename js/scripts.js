@@ -12,22 +12,108 @@ $(document).ready(function() {
     }
 
     // Form Validation
-    $('#volunteer-form, #partner-form, #contact-form').submit(function(e) {
-        e.preventDefault();
-        let valid = true;
-        $(this).find('input[required], textarea[required], select[required]').each(function() {
-            if (!$(this).val()) {
-                valid = false;
-                $(this).addClass('is-invalid');
-            } else {
-                $(this).removeClass('is-invalid');
+    // Validation Rules
+    const validators = {
+        name: function(value) {
+            const regex = /^[A-Za-z\s]{2,}$/;
+            return {
+                valid: regex.test(value),
+                message: 'Name must be at least 2 characters long and contain only letters and spaces.'
+            };
+        },
+        organization: function(value) {
+            const regex = /^[A-Za-z\s]{2,}$/;
+            return {
+                valid: regex.test(value),
+                message: 'Organization must be at least 2 characters long and contain only letters and spaces.'
+            };
+        },
+        email: function(value) {
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return {
+                valid: regex.test(value),
+                message: 'Please enter a valid email address.'
+            };
+        },
+        role: function(value) {
+            return {
+                valid: value !== '',
+                message: 'Please select a role.'
+            };
+        },
+        message: function(value) {
+            return {
+                valid: value.length >= 10,
+                message: 'Message must be at least 10 characters long.'
+            };
+        }
+    };
+
+    // Show/Hide Error Messages
+    function showError($field, message) {
+        $field.addClass('is-invalid').removeClass('is-valid');
+        let $error = $field.siblings('.invalid-feedback');
+        if ($error.length === 0) {
+            $error = $('<div class="invalid-feedback"></div>').insertAfter($field);
+        }
+        $error.text(message);
+        $field.attr('aria-invalid', 'true');
+    }
+
+    function clearError($field) {
+        $field.removeClass('is-invalid').addClass('is-valid');
+        $field.siblings('.invalid-feedback').remove();
+        $field.removeAttr('aria-invalid');
+    }
+
+    // Validate Field
+    function validateField($field) {
+        const fieldType = $field.attr('id').replace(/^(volunteer|partner|contact)-/, '');
+        const value = $field.val().trim();
+        if ($field.prop('required') && !value) {
+            showError($field, 'This field is required.');
+            return false;
+        }
+        if (validators[fieldType]) {
+            const result = validators[fieldType](value);
+            if (!result.valid) {
+                showError($field, result.message);
+                return false;
+            }
+        }
+        clearError($field);
+        return true;
+    }
+
+    // Validate Form
+    function validateForm($form) {
+        let isValid = true;
+        $form.find('input[required], select[required], textarea[required]').each(function() {
+            if (!validateField($(this))) {
+                isValid = false;
             }
         });
-        if (valid) {
-            alert('Form submitted successfully!');
-            this.reset();
+        return isValid;
+    }
+
+    // Real-time Validation
+    $('#volunteer-form, #partner-form, #contact-form').find('input, select, textarea').on('input change', function() {
+        validateField($(this));
+    });
+
+    // Form Submission
+    $('#volunteer-form, #partner-form, #contact-form').submit(function(e) {
+        e.preventDefault();
+        const $form = $(this);
+        if (validateForm($form)) {
+            alert('Form submitted successfully!'); // Placeholder for AJAX
+            $form[0].reset();
+            $form.find('.is-valid').removeClass('is-valid');
         } else {
-            alert('Please fill all required fields.');
+            $form.find('input[required], select[required], textarea[required]').each(function() {
+                validateField($(this));
+            });
+            $form.find('.is-invalid').first().focus();
         }
     });
 
