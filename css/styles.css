@@ -33,7 +33,8 @@ body.dark-mode footer {
     background: #0A2F0D; /* Darker green */
 }
 
-body.dark-mode .btn-primary {
+body.dark-mode .btn-primary,
+body.dark-mode .btn-class {
     background: var(--accent);
     color: var(--dark-bg);
 }
@@ -42,6 +43,12 @@ body.dark-mode .btn-secondary {
     background: var(--dark-bg);
     color: var(--accent);
     border: 1px solid var(--accent);
+}
+
+body.dark-mode .input-class {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--dark-text);
 }
 
 .container {
@@ -80,12 +87,14 @@ body.dark-mode .btn-secondary {
     cursor: pointer;
 }
 
-.btn-primary {
+.btn-primary,
+.btn-class {
     background: var(--primary);
     color: var(--neutral);
 }
 
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-class:hover {
     background: #145214;
     transform: scale(1.05);
 }
@@ -99,6 +108,30 @@ body.dark-mode .btn-secondary {
 .btn-secondary:hover {
     background: var(--secondary);
     transform: scale(1.05);
+}
+
+.input-class {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    border: 1px solid var(--text);
+    border-radius: 8px;
+    margin-bottom: 16px;
+    background: var(--neutral);
+    color: var(--text);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input-class:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(27, 94, 32, 0.2); /* Matches --primary with transparency */
+}
+
+.input-class::placeholder {
+    color: #6B7280; /* Tailwind gray-500 for placeholder */
+    opacity: 1;
 }
 
 .hero {
@@ -182,8 +215,14 @@ body.dark-mode .btn-secondary {
         padding: 32px;
     }
 
-    .btn {
+    .btn,
+    .btn-class {
         padding: 14px 28px;
+        font-size: 18px;
+    }
+
+    .input-class {
+        padding: 14px;
         font-size: 18px;
     }
 }
@@ -195,6 +234,6 @@ body.dark-mode .btn-secondary {
 }
 
 /* Critical CSS for above-the-fold */
-header, .hero, .btn, h1, h2, h3, h4 {
+header, .hero, .btn, .btn-class, h1, h2, h3, h4 {
     font-family: 'Inter', sans-serif;
 }
